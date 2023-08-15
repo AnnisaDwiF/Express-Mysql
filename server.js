@@ -3,6 +3,7 @@ import cors from 'cors';
 
 import db from './database/db.js';
 import pesertaRouter from './routes/pesertaRouter.js';
+import galeryRouter from './routes/galeryRouter.js';
 
 const port = process.env.PORT || 3000;
 
@@ -20,6 +21,9 @@ db.sync()
   });
 
 app.use('/api/peserta', pesertaRouter);
+app.use('/api/galery', galeryRouter);
+
+app.use(express.static('public/upload'));
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
